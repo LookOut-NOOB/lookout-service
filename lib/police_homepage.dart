@@ -263,7 +263,7 @@ class _PoliceHomePageState extends State<PoliceHomePage> {
                         "Fatal accident including two cars and a motorcycle. Two injured, no one dead.",
                     location: "Kampala",
                     dateTime: DateTime.now(),
-                    status: "off",
+                    status: "2",
                   );
                 })),
           )
@@ -354,15 +354,20 @@ class AlarmTile extends StatelessWidget {
             )
           ],
         ),
-        trailing: status == "off"
+        trailing: status == "2"
             ? const Icon(
                 Icons.done,
                 color: Colors.green,
               )
-            : const Icon(
-                Icons.more_horiz,
-                color: Colors.grey,
-              ),
+            : status == "0"
+                ? Icon(
+                    Icons.cancel_outlined,
+                    color: Colors.red.withOpacity(0.5),
+                  )
+                : const Icon(
+                    Icons.more_horiz,
+                    color: Colors.grey,
+                  ),
       ),
     );
   }
