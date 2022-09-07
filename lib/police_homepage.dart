@@ -54,23 +54,27 @@ class PoliceHomePage extends StatelessWidget {
               ),
             ),
             backgroundColor: const Color.fromARGB(255, 6, 16, 66),
-            expandedHeight: 300,
+            expandedHeight: 280,
             flexibleSpace: FlexibleSpaceBar(
                 background: Container(
-                    height: 300,
+                    height: 280,
                     color: const Color.fromARGB(255, 6, 16, 66),
                     child: Center(
                       child: Container(
-                        height: 150,
-                        width: 300,
+                        height: 160,
+                        margin: const EdgeInsets.only(top: 20),
+                        width: MediaQuery.of(context).size.width - 20,
                         decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.all(
                               Radius.circular(30),
                             )),
                         child: Padding(
-                          padding: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 20),
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Row(
                                 children: [
@@ -84,7 +88,7 @@ class PoliceHomePage extends StatelessWidget {
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(20))),
                                         child: const Icon(
-                                          Icons.medication,
+                                          Icons.person,
                                           size: 30,
                                         ),
                                       ),
@@ -106,91 +110,115 @@ class PoliceHomePage extends StatelessWidget {
                                         ],
                                       ),
                                       Row(
-                                        children: const [
+                                        children: [
                                           Text(
                                             "Bawembye Tonny",
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headline6,
+                                            // style: TextStyle(
+                                            //     fontSize: 18,
+                                            //     fontWeight: FontWeight.bold),
                                           )
                                         ],
                                       ),
-                                      Row(
-                                        children: [
-                                          const Text(
-                                            "0771234567",
-                                            style: TextStyle(fontSize: 15),
-                                          ),
-                                          const SizedBox(
-                                            width: 8,
-                                          ),
-                                          GestureDetector(
-                                            onTap: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const LoginPage()),
-                                              );
-                                            },
-                                            child: Container(
-                                              width: 25,
-                                              height: 25,
-                                              decoration: const BoxDecoration(
-                                                  color: Colors.grey,
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(20))),
-                                              child: const Icon(
-                                                Icons.call,
-                                                size: 15,
+                                      Container(
+                                        margin: const EdgeInsets.only(top: 10),
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 4, horizontal: 6),
+                                        decoration: BoxDecoration(
+                                            color: Colors.blue.withOpacity(0.1),
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(20))),
+                                        child: Row(
+                                          children: [
+                                            GestureDetector(
+                                              onTap: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const LoginPage()),
+                                                );
+                                              },
+                                              child: Container(
+                                                width: 25,
+                                                height: 25,
+                                                decoration: const BoxDecoration(
+                                                    color: Colors.grey,
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                20))),
+                                                child: const Icon(
+                                                  Icons.call,
+                                                  size: 15,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                            const SizedBox(
+                                              width: 16,
+                                            ),
+                                            const Text(
+                                              "0771234567",
+                                              style: TextStyle(fontSize: 15),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 10),
-                              Container(
-                                width: 200,
-                                decoration: const BoxDecoration(
-                                    color: Colors.grey,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20))),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 40),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: const [
-                                          Icon(Icons.location_history),
-                                          Text("Wandegeya"),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: const [
-                                          Text("Go to map"),
-                                          Icon(Icons.arrow_circle_right),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                    primary: Colors.blue,
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20)))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: const [
+                                        Icon(
+                                          Icons.location_on,
+                                          size: 18,
+                                        ),
+                                        SizedBox(
+                                          width: 6,
+                                        ),
+                                        Text("Wandegeya"),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 2,
+                                          height: 30,
+                                          decoration: const BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20))),
+                                          margin:
+                                              const EdgeInsets.only(right: 10),
+                                        ),
+                                        const Text("Go to map"),
+                                        const Icon(
+                                          Icons.arrow_forward_ios,
+                                          size: 18,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                              )
-                              // SizedBox(width: 20),
-                              // Icon(Icons.emergency,
-                              //     color: Color.fromARGB(255, 235, 13, 13)),
-                              // SizedBox(width: 20),
-                              // Text(
-                              //   "No active alarms",
-                              //   style: TextStyle(
-                              //       fontSize: 20,
-                              //       color: Color.fromARGB(255, 235, 13, 13)),
-                              // ),
+                              ),
                             ],
                           ),
                         ),
@@ -200,61 +228,114 @@ class PoliceHomePage extends StatelessWidget {
           SliverFillRemaining(
             child: ListView.builder(
                 itemCount: 10,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: ((context, index) {
-                  return ListTile(
-                    contentPadding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 20),
-                    title: const Text(
-                      "Alarm",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: const [
-                            Flexible(
-                              child: Text(
-                                  "Fatal accident including two cars and a motorcycle. Two injured, no one dead."),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 10),
-                        Row(
-                          children: [
-                            Row(
-                              children: const [
-                                Text("Location: ",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w900,
-                                        color: Colors.black)),
-                                Text(
-                                  "Kampala",
-                                ),
-                              ],
-                            ),
-                            const SizedBox(width: 20),
-                            Row(
-                              children: const [
-                                Text("Date: ",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w900,
-                                        color: Colors.black)),
-                                Text("24/08/2022"),
-                              ],
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    trailing: const Icon(
-                      Icons.done,
-                      color: Colors.green,
-                    ),
+                  return AlarmTile(
+                    description:
+                        "Fatal accident including two cars and a motorcycle. Two injured, no one dead.",
+                    location: "Kampala",
+                    dateTime: DateTime.now(),
+                    status: "off",
                   );
                 })),
           )
         ],
+      ),
+    );
+  }
+}
+
+class AlarmTile extends StatelessWidget {
+  final String? description;
+  final DateTime dateTime;
+  final String? location;
+  final String? status;
+
+  const AlarmTile({
+    super.key,
+    this.description,
+    required this.dateTime,
+    this.location,
+    this.status,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: const [
+                Icon(Icons.notifications_active_outlined,
+                    color: Color.fromARGB(255, 235, 13, 13)),
+                SizedBox(
+                  width: 6,
+                ),
+                Text(
+                  "Alarm",
+                  style: TextStyle(fontSize: 18),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                const Text("Date: ", style: TextStyle(color: Colors.grey)),
+                Text(
+                  dateTime.toLocal().toString().split(' ')[0],
+                ),
+              ],
+            ),
+          ],
+        ),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              margin: const EdgeInsets.symmetric(vertical: 8),
+              height: 1,
+              color: Colors.grey.withOpacity(0.5),
+            ),
+            Row(
+              children: [
+                Flexible(
+                  child: Text(description ?? "No description"),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                Row(
+                  children: [
+                    const Icon(Icons.location_on),
+                    const Text("Location: ",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w900, color: Colors.black)),
+                    Text(
+                      location ?? "Unknown",
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 20),
+              ],
+            )
+          ],
+        ),
+        trailing: status == "off"
+            ? const Icon(
+                Icons.done,
+                color: Colors.green,
+              )
+            : const Icon(
+                Icons.more_horiz,
+                color: Colors.grey,
+              ),
       ),
     );
   }

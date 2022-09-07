@@ -1,4 +1,4 @@
-package com.example.lookout_service
+package com.lookout.service
 
 import io.flutter.embedding.android.FlutterActivity
 

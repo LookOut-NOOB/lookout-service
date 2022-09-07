@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.lookout_service">
+    package="com.lookout.service">
    <application
         android:label="lookout_service"
         android:name="${applicationName}"
