@@ -1,10 +1,19 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lookout_service/loginpage.dart';
 
 import 'ambulance_home.dart';
+import 'viewmodels/app_viewmodel.dart';
 
-class PoliceHomePage extends StatelessWidget {
+class PoliceHomePage extends StatefulWidget {
   const PoliceHomePage({Key? key}) : super(key: key);
+
+  @override
+  State<PoliceHomePage> createState() => _PoliceHomePageState();
+}
+
+class _PoliceHomePageState extends State<PoliceHomePage> {
+  AppViewModel appViewModel = AppViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +29,24 @@ class PoliceHomePage extends StatelessWidget {
                   Icons.clear,
                   color: Color.fromARGB(255, 241, 241, 243),
                 ),
+                //TODO: remove this, its just showing how to querry data.
+                FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                    future: appViewModel.getAppNameFromFirebase(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else {
+                        Map<String, dynamic>? data =
+                            snapshot.data?.docs.first.data();
+
+                        print(":::::::::");
+                        print(snapshot.data?.docs.length);
+                        print(":::::::::");
+                        return Text(data?["appName"] ?? "No data");
+                      }
+                    }),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
@@ -46,10 +73,10 @@ class PoliceHomePage extends StatelessWidget {
                         topRight: Radius.circular(30))),
                 width: double.infinity,
                 padding: const EdgeInsets.only(top: 5, bottom: 10),
-                child: const Center(
+                child: Center(
                     child: Text(
                   "LookOut Police",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.headline5,
                 )),
               ),
             ),
